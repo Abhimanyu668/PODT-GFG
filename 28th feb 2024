@@ -1,0 +1,8 @@
+class Solution{
+    public:
+    int DivisibleByEight(string s){
+        int n = stoi(s.substr(max((int)s.size() - 3, 0)));
+        
+        return n % 8 ? -1 : 1;
+    }
+};
