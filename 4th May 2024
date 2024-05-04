@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+    Node* solve(int i,int j,int &ind,int in[],int post[],int n){
+        if(i>j || ind<0)return NULL;
+        Node* root=new Node(post[ind--]);
+        int p=i;
+        for(p;p<=j;p++){
+            if(in[p]==root->data)break;
+        }
+        root->right=solve(p+1,j,ind,in,post,n);
+        root->left=solve(i,p-1,ind,in,post,n);
+        return root;
+    }
+    //Function to return a tree created from postorder and inoreder traversals.
+    Node *buildTree(int in[], int post[], int n) {
+        // Your code here
+        int ind=n-1;
+        return solve(0,n-1,ind,in,post,n);
+    }
+};
